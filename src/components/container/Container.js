@@ -7,7 +7,7 @@ function Container(props){
         <div className='container'>
         {props.data.map(item => (
             <Card key={item.hotel_id}
-                hotelId={item.hotel_id}
+                hotelid={item.hotel_id}
                 imageUrl={item.max_photo_url}
                 name={item.hotel_name}
                 country={item.country_trans}
