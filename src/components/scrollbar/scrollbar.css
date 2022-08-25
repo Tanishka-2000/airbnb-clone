@@ -1,0 +1,29 @@
+
+.wrapper{
+    height: 120px;
+    width: 100%;
+    padding: 0 150px 20px;
+    overflow-y: hidden;
+}
+.scrollbar{
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+
+.scrollbar div{
+    display: inline-block;
+    width: 100px;
+    margin-right: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    color: #777;
+    cursor: pointer;
+}
+.scrollbar div:hover{
+    color: #000;
+    border-bottom: 1px solid #777;
+}
+.material-symbols-outlined{
+    font-size: 30px;
+    margin: 40px auto 10px;
+}

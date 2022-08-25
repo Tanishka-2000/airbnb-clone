@@ -1,0 +1,37 @@
+.card{
+    width: 350px;
+    height: 450px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    letter-spacing: 1px;
+}
+.card .image-div{
+    width: 350px;
+    height: 350px;
+    overflow: hidden;
+    border-radius: 10px;
+    /* border-top-right-radius: 10px; */
+    text-align: center;
+}
+.card img{
+    height: 350px;
+    /* border-top-left-radius: 10px;
+    border-top-right-radius: 10px; */
+}
+.card .star{
+    margin: 0;
+    font-size: .9rem;
+}
+.card .heading{
+    font-weight: bold;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.card p{
+    margin: 3px;
+}
+.card .price{
+    font-weight: bold;
+}
