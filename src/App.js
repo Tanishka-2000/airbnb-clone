@@ -19,12 +19,7 @@ function App() {
   //     <Container data={data}/>
   //     </>
   // );
-  return(
-      <>
-      <NavBar />
-      <Details hotelid='1'/>
-      </>
-  )
+
 }
 // async function getDataByName(){
 //
