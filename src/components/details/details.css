@@ -160,9 +160,17 @@
     font-size: 1.2rem;
     font-weight: 300;
 }
-.review-score span.rating-bar{
+.review-score .bar-container{
     display: inline-block;
-    width: 174px;
+    width: 200px;
+    height: 5px;
+    margin: 0 10px;
+    background-color: #999;
+    border-radius: 3px;
+}
+.review-score .bar-container{
+    display: inline-block;
+    width: 1%;
     height: 5px;
     margin: 0 10px;
     background-color: black;

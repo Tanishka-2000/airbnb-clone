@@ -1,4 +1,4 @@
-import {,useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 
 function ImageGrid(props){
     const [images, setImages] = useState(null);
@@ -18,7 +18,7 @@ function ImageGrid(props){
 
     return(
         <div className='image-grid'>
-        {images && images.slice(0,5).map(image => <img src={image.url_max}/>)}
+        {images && images.slice(0,5).map((image,i) => <img src={image.url_max} key={i}/>)}
         </div>
     )
 }

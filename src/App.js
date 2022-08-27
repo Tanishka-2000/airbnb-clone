@@ -30,13 +30,16 @@ function App() {
         setShowDetails(true);
         setHotel(hotel)
     }
+    function hideHotelDetail(){
+        setShowDetails(false);
+    }
     useEffect(() => {
         getTestData();
     },[]);
 
   return (
       <>
-      <NavBar />
+      <NavBar hideHotelDetail={hideHotelDetail}/>
       {showDetails ? <Details hotel={hotel}/> :
       <>
       <ScrollBar getDataByName={getTestData}/>
