@@ -29,27 +29,29 @@ function Reviews(props){
     }
 
     useEffect(() => {
-        getReviewScore(props.hotelId);
-        getReviewData(props.hotelId);
+        setTimeout(() => {
+            getReviewScore(props.hotelId);
+            getReviewData(props.hotelId);
+        },1000);
     },[]);
 
     return (
         <div id='reviews'>
-        <h2>* 9.0 {reviewScores.length}reviews</h2>
+        <h2>&#9733; 9.0 <span className='light'>23 reviews</span></h2>
             <div className='review-score'>
                 {reviewScores.map((score,i) =>
                 <div key={i}>
                     <span className='question'>{score.localized_question}</span>
                     <span>
-                        <span className='bar.container'><span className='bar' style={{width: score.score*10 + '%'}}></span></span>
+                        <span className='bar-container'><span className='bar' style={{width: score.score*10 + '%'}}></span></span>
                         <span className='score'>{score.score}</span>
                     </span>
                 </div>
                 )}
             </div>
             <div className='review-hotel'>
-            {reviewData.map(review => (
-                <div className='review-data'>
+            {reviewData.map((review,i) => (
+                <div className='review-data' key={i}>
                     <div className='profile'>
                     <span className="material-symbols-outlined">account_circle</span>
                         <div>
@@ -57,7 +59,11 @@ function Reviews(props){
                             <span>{(new Date(review.date)).toDateString().slice(3)}</span>
                         </div>
                     </div>
-                    <div className='review-text'>{review.pros}</div>
+                    <div className='review-text'>
+                        <p>{review.title}</p>
+                        <p>{review.pros}</p>
+                        <p>{review.cons}</p>
+                    </div>
                 </div>
             ))}
             </div>

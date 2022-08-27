@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react';
 import Specials from './Specials';
 import Amenities from './Amenities';
 import Rooms from './Rooms';
-import Form from './Form';
+import HotelForm from './HotelForm';
 
 function Overview(props){
     const [desp, setDesp] = useState('');
@@ -27,10 +27,10 @@ function Overview(props){
                 <p>{props.data.split(':')[1]}</p>
             </div>
             <Specials />
-            <div className='description'>{desp.slice(0,150)}...</div>
-            <Rooms />
+            <div className='description'>{desp}</div>
+            <Rooms hotelImages={props.hotelImages}/>
             <Amenities hotelId={props.hotelId}/>
-            <Form />
+            <HotelForm price={props.price}/>
         </div>
     )
 }
