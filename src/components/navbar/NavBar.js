@@ -10,6 +10,7 @@ function NavBar(props){
     const [value, setValue] = useState('');
     const [isSigningUp, setIsSigningUp] = useState(false);
     const [isSigningIn, setIsSigningIn] = useState(false);
+    const [isSigned, setIsSigned] = useState(false);
 
     function inputChange(e){
         setValue(e.target.value);
@@ -33,11 +34,10 @@ function NavBar(props){
             console.log(user);
             props.setUserId(user.uid);
             startUserDatabase(user.uid);
-
+            setIsSigningUp(false);
+            setIsSigned(true);
           })
           .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
             console.log(error);
           });
     }
@@ -57,11 +57,11 @@ function NavBar(props){
 
             props.setUserId(user.uid);
             startUserDatabase(user.uid);
-
+            setIsSigningIn(false);
+            setIsSigned(true);
           })
           .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
+            console.log(error);
           });
     }
      async function startUserDatabase(uid){
@@ -84,8 +84,12 @@ function NavBar(props){
         </form>
 
         <div className='signup-btn-group'>
+            {isSigned ?'Signed In':
+            <>
             <button className='signup-btn' onClick={() => { setIsSigningIn(false);setIsSigningUp(true)}}>Sign Up</button>
             <button className='signup-btn' onClick={() =>{ setIsSigningUp(false);setIsSigningIn(true)}}>Sign In</button>
+            </>
+        }
             <span className="material-symbols-outlined">account_circle</span>
         </div>
         {
@@ -104,14 +108,13 @@ function NavBar(props){
                 </div>
                 <button type='submit'>{isSigningIn ? 'Sign In' : 'Sign Up'}</button>
             </form>
-            <h1>Or</h1>
-            <div className='sign-in-btns'>
-                <button>Sign In With Google<img src='google-logo.png'/></button>
-                <button>Sign In With Facebook<img src='facebook-logo.png' /></button>
-            </div>
-        </div>)
-    }
+        </div>)}
         </nav>
     );
 }
 export default NavBar;
+// <h1>Or</h1>
+// <div className='sign-in-btns'>
+//     <button>Sign In With Google<img src='google-logo.png'/></button>
+//     <button>Sign In With Facebook<img src='facebook-logo.png' /></button>
+// </div>

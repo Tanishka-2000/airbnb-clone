@@ -7,8 +7,10 @@ import Details from './components/details/Details';
 function App() {
     const [data, setData] = useState([]);
     const [showDetails, setShowDetails] = useState(false);
+
     const [hotel, setHotel] = useState(null);
     const [userId, setUserId] = useState(null);
+
     async function changeData(name){
         const result = await getDataByName(name);
         for(const item of result){
@@ -39,6 +41,7 @@ function App() {
     function hideHotelDetail(){
         setShowDetails(false);
     }
+
     useEffect(() => {
         getTestData('caves');
     },[]);
@@ -49,7 +52,7 @@ function App() {
       {showDetails ? <Details hotel={hotel} userId={userId}/> :
       <>
       <ScrollBar refreshScreen={refreshScreen}/>
-      <Container data={data} showHotelDetail={showHotelDetail} userId={userId}/>
+      <Container data={data} showHotelDetail={showHotelDetail} userId={userId} />
       </>}
       </>
   );

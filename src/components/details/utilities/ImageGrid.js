@@ -1,17 +1,26 @@
-import {useState, useEffect} from 'react';
+// import {useState, useEffect} from 'react';
+// import { doc, getDoc } from "firebase/firestore";
 
 function ImageGrid(props){
-    const [favourite, setFavoutite] = useState(false);
+    // const [favourite, setFavoutite] = useState(false);
     function addToFavoutite(){
-        setFavoutite(true);
+        props.addToFavoutite();
     }
-    function removeFromFavoutite(){
-        setFavoutite(false);
-    }
+    // function removeFromFavoutite(){
+    //     props.removeFromFavoutite();
+    // }
+    // async function isFavourite(){
+    //     const docSnap = await getDoc(doc(props.db, 'users', props.userId));
+    //     if(docSnap.data().favourite.includes(props.hotelId)) setFavoutite(true);
+    // }
+    // useEffect(() => {
+    //     isFavourite();
+    // });
     return(
         <div className='image-grid'>
-        {favourite ? <div className='like-btn' onClick={removeFromFavoutite}>&#10084;</div> : <div className='like-btn' onClick={addToFavoutite}>&#9825;</div>} 
-        {props.hotelImages?.slice(0,5).map((image,i) => <div  key={i}><img src={image.url_max}/></div>)}
+        {props.hotelImages?.slice(0,5).map((image,i) => <div  key={i}><img src={image.url_max} alt={image.photo_id}/></div>)}
+        <div className='like-btn' onClick={addToFavoutite}>&#9825;</div>
+
         </div>
     )
 }
