@@ -1,8 +1,8 @@
 
 .wrapper{
-    height: 120px;
+    height: 100px;
     width: 100%;
-    padding: 0 150px 20px;
+    padding: 24px 150px 20px;
     overflow-y: hidden;
 }
 .scrollbar{

@@ -1,8 +1,16 @@
-// import {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 
 function ImageGrid(props){
+    const [favourite, setFavoutite] = useState(false);
+    function addToFavoutite(){
+        setFavoutite(true);
+    }
+    function removeFromFavoutite(){
+        setFavoutite(false);
+    }
     return(
         <div className='image-grid'>
+        {favourite ? <div className='like-btn' onClick={removeFromFavoutite}>&#10084;</div> : <div className='like-btn' onClick={addToFavoutite}>&#9825;</div>} 
         {props.hotelImages?.slice(0,5).map((image,i) => <div  key={i}><img src={image.url_max}/></div>)}
         </div>
     )

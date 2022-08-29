@@ -10,7 +10,7 @@ function ScrollBar(props) {
     function handleClick(e){
         let name = e.target.getAttribute('data-name') || e.target.parentElement.getAttribute('data-name');
         console.log(name);
-        props.getDataByName(name);
+        props.refreshScreen(name);
     }
 
     return (

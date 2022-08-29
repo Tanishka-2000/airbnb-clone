@@ -1,25 +1,26 @@
+import app from '../firebase-config';
+import { getFirestore , doc, updateDoc, arrayUnion, arrayRemove} from "firebase/firestore";
 import './container.css';
 import Card from '../card/Card';
 
 function Container(props){
-
-    // return (
-    //     <div className='container'>
-    //     {props.data.map(item => (
-    //         <Card key={item.hotel_id}
-    //             hotelid={item.hotel_id}
-    //             imageUrl={item.max_photo_url}
-    //             name={item.hotel_name}
-    //             country={item.country_trans}
-    //             rating={item.review_score}
-    //             price={item.soldout || item.price_breakdown.gross_price}
-    //             showHotelDetail={props.showHotelDetail} />
-    //     ))}
-    //     </div>
-    // )
+    const db = getFirestore(app);
+    async function addToFavoutite(id){
+        console.log('updating adding');
+        console.log(id);
+        await updateDoc(doc(db, 'users', props.userId), {
+            favourite: arrayUnion(id),
+        });
+    }
+    async function removeFromFavoutite(id){
+        console.log('updating removing');
+        await updateDoc(doc(db, 'users',  props.userId), {
+            favourite: arrayRemove(id),
+        });
+    }
     return(
         <div className='container'>
-        {props.data.map(item => <Card key={item.hotel_id} data={item} showHotelDetail={props.showHotelDetail}/>)}
+        {props.data.map((item,i) => <Card key={i} data={item} showHotelDetail={props.showHotelDetail} userId={props.userId} addToFavoutite={addToFavoutite} removeFromFavoutite={removeFromFavoutite}/>)}
         </div>
     )
 }

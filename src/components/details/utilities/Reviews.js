@@ -72,3 +72,4 @@ function Reviews(props){
 }
 
 export default Reviews;
+// <div className='add-review'><button onClick={addReview}>Add Review</button></div>
