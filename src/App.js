@@ -23,17 +23,17 @@ function App() {
         setData([]);
         changeData(name);
     }
-    async function getTestData(){
-        const response2 = await fetch('https://booking-com.p.rapidapi.com/v1/hotels/search?checkout_date=2022-10-01&units=metric&dest_id=99&dest_type=country&locale=en-us&adults_number=2&order_by=popularity&filter_by_currency=INR&checkin_date=2022-09-07&room_number=1',{
-            headers: {
-                'X-RapidAPI-Key': '1107a84eabmsh0c79d2680cb6d1cp1384edjsn1e7834c13e78',
-                'X-RapidAPI-Host': 'booking-com.p.rapidapi.com'
-            }
-        });
-        const result2 = await response2.json();
-        console.log(result2.result);
-        result2.result && setData([...result2.result]);
-    }
+    // async function getTestData(){
+    //     const response2 = await fetch('https://booking-com.p.rapidapi.com/v1/hotels/search?checkout_date=2022-10-01&units=metric&dest_id=99&dest_type=country&locale=en-us&adults_number=2&order_by=popularity&filter_by_currency=INR&checkin_date=2022-09-07&room_number=1',{
+    //         headers: {
+    //             'X-RapidAPI-Key': '1107a84eabmsh0c79d2680cb6d1cp1384edjsn1e7834c13e78',
+    //             'X-RapidAPI-Host': 'booking-com.p.rapidapi.com'
+    //         }
+    //     });
+    //     const result2 = await response2.json();
+    //     console.log(result2.result);
+    //     result2.result && setData([...result2.result]);
+    // }
     function showHotelDetail(hotel){
         setShowDetails(true);
         setHotel(hotel)
@@ -43,7 +43,7 @@ function App() {
     }
 
     useEffect(() => {
-        getTestData('caves');
+        changeData('caves');
     },[]);
 
   return (
