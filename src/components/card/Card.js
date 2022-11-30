@@ -27,7 +27,7 @@ function Card(props){
         <div className='image-div'><img src={props.data.max_photo_url} alt='sometext'/></div>
         <p className='heading'>{props.data.hotel_name}, {props.data.country_trans}<span className='rating'>&#9733; {props.data.review_score}</span></p>
         <p>2-7Jul</p>
-        <p><span className='price'>{props.data.soldout ? 'Sold Out' : price.value + '' + price.currency}</span>per night</p>
+        <p><span className='price'>{props.data.soldout ? 'Sold Out' : parseInt(price.value) + '' + price.currency}</span>per night</p>
      </div>
  );
 }
