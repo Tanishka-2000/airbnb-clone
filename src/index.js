@@ -7,11 +7,19 @@ import {
 import App from './App';
 import './index.css';
 import Root from './root/root';
+import Home, {homeLoader} from './home/home';
 
 const router = createBrowserRouter([
     {
         path: '/airbnb-clone',
-        element: <Root />
+        element: <Root />,
+        children: [
+            {
+                index: true,
+                element: <Home />,
+                loader: homeLoader
+            }
+        ]
     }
 ])
 
