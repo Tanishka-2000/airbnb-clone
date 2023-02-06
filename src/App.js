@@ -13,10 +13,12 @@ function App() {
 
     async function changeData(name){
         const result = await getDataByName(name);
+        let temp = []
         for(const item of result){
             const result2 = await getDataByDestId(item.dest_id, item.dest_type);
-            result2 && setData(prev => [...prev, ...result2]);
+            temp = result2 ? [...temp, ...result2] : [...temp];
         }
+        setData(prev => [...prev, ...temp]);
     }
     function refreshScreen(name){
         setShowDetails(false);
@@ -74,7 +76,7 @@ async function getDataByDestId(destId, destType){
     let checkIn = new Date();
     let checkOut = new Date();
     checkOut.setDate(checkOut.getDate() + 5);
-    const response2 = await fetch('https://booking-com.p.rapidapi.com/v1/hotels/search?checkout_date='+ checkOut.toISOString().slice(0,10)+'&units=metric&dest_id='+destId+'&dest_type='+destType +'&locale=en-us&adults_number=2&order_by=popularity&filter_by_currency=INR&checkin_date='+ checkIn.toISOString().slice(0,10)+'&room_number=1',{
+    const response2 = await fetch('https://booking-com.p.rapidapi.com/v1/hotels/search?checkout_date='+ checkOut.toISOString().slice(0,10)+'&units=metric&dest_id='+destId+'&dest_type='+destType +'&locale=en-us&adults_number=2&order_by=popularity&filter_by_currency=USD&checkin_date='+ checkIn.toISOString().slice(0,10)+'&room_number=1',{
         headers: {
             'X-RapidAPI-Key': '1107a84eabmsh0c79d2680cb6d1cp1384edjsn1e7834c13e78',
             'X-RapidAPI-Host': 'booking-com.p.rapidapi.com'
