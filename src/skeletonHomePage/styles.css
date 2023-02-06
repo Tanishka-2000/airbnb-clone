@@ -1,0 +1,66 @@
+.skeleton{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.skeleton nav{
+  width: 90%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 0;
+}
+
+.skeleton nav div{
+  width: 250px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #eee;
+  margin: 10px;
+}
+
+.skeleton .skeleton-scrollbar{
+  width: 90%;
+  height: 50px;
+  background-color: #eee;
+  margin: 20px 0;
+  border-radius: 20px ;
+}
+
+.skeleton .skeleton-container{
+  border-top: 1px solid #ccc;
+  padding: 20px;
+  width: 90%;
+  min-height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(5, 300px);
+  grid-gap: 20px;
+}
+
+.skeleton .skeleton-card{
+  width: 300px;
+  height: 400px;
+  border-radius: 10px;
+}
+
+.skeleton .skeleton-card .image{
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
+  background-color: #eee;
+}
+
+.skeleton .skeleton-card  p{
+  width: 90%;
+  height: 20px;
+  border-radius: 10px;
+  background-color: #eee;
+  margin: 10px 0;
+}
+
+.skeleton .skeleton-card  p.price{
+  width: 40%;
+}

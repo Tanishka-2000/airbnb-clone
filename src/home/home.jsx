@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { defer, useLoaderData } from "react-router-dom";
 import Container from "../components/container/Container";
 export async function homeLoader(){
   const result = await getDataByName('beach');
@@ -7,9 +7,10 @@ export async function homeLoader(){
         const result2 = await getDataByDestId(item.dest_id, item.dest_type);
         hotels = result2 ? [...hotels, ...result2] : [...hotels];
     }
-  return hotels  
+  return defer({hotels});
 }
 
+// data loading speed two slow  
 export default function Home({userId}){
   const data = useLoaderData();
   console.log(data);

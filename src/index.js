@@ -8,7 +8,7 @@ import App from './App';
 import './index.css';
 import Root from './root/root';
 import Home, {homeLoader} from './home/home';
-
+import SkeletonHomePage from './skeletonHomePage/skeletonHomePage';
 const router = createBrowserRouter([
     {
         path: '/airbnb-clone',
@@ -25,5 +25,6 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <RouterProvider router={router} />
+    // <RouterProvider router={router} />
+    <SkeletonHomePage />
 );
