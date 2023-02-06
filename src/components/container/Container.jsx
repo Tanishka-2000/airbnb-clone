@@ -8,6 +8,7 @@ function Container(props){
     // const [favourite, setFavoutite] = useState([]);
     const db = getFirestore(app);
     async function addToFavoutite(id){
+        if(!props.userId) return;
         console.log('updating adding');
         console.log(id);
         await updateDoc(doc(db, 'users', props.userId), {

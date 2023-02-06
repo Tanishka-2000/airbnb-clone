@@ -5,9 +5,11 @@ function HotelForm(props){
     const [price, setPrice] = useState(0);
 
     let pricePerN = props.price.gross_amount_per_night.value;
+    let currency = props.price.gross_amount_per_night.currency;
+    console.log(props);
 
     async function getExchangeRate(curr){
-        const response = await fetch('https://booking-com.p.rapidapi.com/v1/metadata/exchange-rates?locale=en-gb&currency=IDR',{
+        const response = await fetch('https://booking-com.p.rapidapi.com/v1/metadata/exchange-rates?locale=en-gb&currency='+currency,{
                headers: {
                    'X-RapidAPI-Key': '1107a84eabmsh0c79d2680cb6d1cp1384edjsn1e7834c13e78',
                    'X-RapidAPI-Host': 'booking-com.p.rapidapi.com'
@@ -41,7 +43,7 @@ function HotelForm(props){
             <form onSubmit={handleSubmit}>
                 <input type='date'/>
                 <input type='date' />
-                <input type='number' />
+                <input type='number' placeholder='GUESTS'/>
                 <button type='submit'>Reserve</button>
             </form>
             <p>* you won't be charged yet</p>

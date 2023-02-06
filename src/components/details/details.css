@@ -213,7 +213,12 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 100px;
-    grid-row-gap: 50px;
+    grid-row-gap: 10px;
+}
+
+.review-data{
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
 }
 .review-data .profile{
     display: flex;
@@ -232,7 +237,8 @@
     font-size: 3rem;
 }
 .review-data .review-text{
-    font-size: 1.1rem;
+    font-size: 1rem;
+    color: #999;
     line-height: 1.5;
 }
 /* .add-review{

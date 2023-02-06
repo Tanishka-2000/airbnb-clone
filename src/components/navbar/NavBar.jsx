@@ -10,7 +10,7 @@ function NavBar(props){
     const [value, setValue] = useState('');
     const [isSigningUp, setIsSigningUp] = useState(false);
     const [isSigningIn, setIsSigningIn] = useState(false);
-    const [isSigned, setIsSigned] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     function inputChange(e){
         setValue(e.target.value);
@@ -35,7 +35,7 @@ function NavBar(props){
             props.setUserId(user.uid);
             startUserDatabase(user.uid);
             setIsSigningUp(false);
-            setIsSigned(true);
+            setIsLoggedIn(true);
           })
           .catch((error) => {
             console.log(error);
@@ -58,7 +58,7 @@ function NavBar(props){
             props.setUserId(user.uid);
             startUserDatabase(user.uid);
             setIsSigningIn(false);
-            setIsSigned(true);
+            setIsLoggedIn(true);
           })
           .catch((error) => {
             console.log(error);
@@ -84,7 +84,7 @@ function NavBar(props){
         </form>
 
         <div className='signup-btn-group'>
-            {isSigned ?'Signed In':
+            {isLoggedIn ?'Logged In':
             <>
             <button className='signup-btn' onClick={() => { setIsSigningIn(false);setIsSigningUp(true)}}>Sign Up</button>
             <button className='signup-btn' onClick={() =>{ setIsSigningUp(false);setIsSigningIn(true)}}>Sign In</button>

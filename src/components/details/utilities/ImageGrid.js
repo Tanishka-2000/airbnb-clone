@@ -1,9 +1,10 @@
-// import {useState, useEffect} from 'react';
+import {useState} from 'react';
 // import { doc, getDoc } from "firebase/firestore";
 
 function ImageGrid(props){
-    // const [favourite, setFavoutite] = useState(false);
+    const [isFavourite, setIsFavoutite] = useState(false);
     function addToFavoutite(){
+        setIsFavoutite(prev => !prev);
         props.addToFavoutite();
     }
     // function removeFromFavoutite(){
@@ -19,26 +20,9 @@ function ImageGrid(props){
     return(
         <div className='image-grid'>
         {props.hotelImages?.slice(0,5).map((image,i) => <div  key={i}><img src={image.url_max} alt={image.photo_id}/></div>)}
-        <div className='like-btn' onClick={addToFavoutite}>&#9825;</div>
+        <div className='like-btn' onClick={addToFavoutite}>{isFavourite ? <i className="fa-solid fa-heart"></i> : <i className="fa-regular fa-heart"></i>}</div>
 
         </div>
     )
 }
 export default ImageGrid;
-
-// <img src='./img2.jpg'/>
-// <img src='./img3.jpg'/>
-// <img src='./img4.jpg'/>
-// <img src='./img5.jpg'/>
-
-// const [images, setImages] = useState(null);
-// async function getHotelImages(id){
-//     const response = await fetch('https://booking-com.p.rapidapi.com/v1/hotels/photos?locale=en-gb&hotel_id='+id,{
-//            headers: {
-//                'X-RapidAPI-Key': '1107a84eabmsh0c79d2680cb6d1cp1384edjsn1e7834c13e78',
-//                'X-RapidAPI-Host': 'booking-com.p.rapidapi.com'
-//            }
-//        });
-//        const result = await response.json();
-//        setImages(result);
-// }

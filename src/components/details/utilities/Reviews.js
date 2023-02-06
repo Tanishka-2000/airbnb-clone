@@ -37,7 +37,7 @@ function Reviews(props){
 
     return (
         <div id='reviews'>
-        <h2>&#9733; 9.0 <span className='light'>23 reviews</span></h2>
+        <h2>&#9733; 9.0 <span className=''>23 reviews</span></h2>
             <div className='review-score'>
                 {reviewScores.map((score,i) =>
                 <div key={i}>
@@ -61,8 +61,8 @@ function Reviews(props){
                     </div>
                     <div className='review-text'>
                         <p>{review.title}</p>
-                        <p>{review.pros}</p>
-                        <p>{review.cons}</p>
+                        <p><span className='bold'>pros:</span> {review.pros}</p>
+                        <p><span className='bold'>cons:</span> {review.cons}</p>
                     </div>
                 </div>
             ))}

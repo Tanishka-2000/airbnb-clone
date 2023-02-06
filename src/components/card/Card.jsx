@@ -29,7 +29,7 @@ function Card(props){
     return (
         <div className='card' onClick={handleClick}>
             <div className='like-btn' onClick={addToFavoutite}>{isFavourite ? <i className="fa-solid fa-heart"></i> : <i className="fa-regular fa-heart"></i>}</div>
-            <div className='image-div'><img src={props.data.max_photo_url} alt='sometext'/></div>'
+            <div className='image-div'><img src={props.data.max_photo_url} alt='sometext'/></div>
             <p className='heading'>
                 <span className='bold'>{props.data.city}, {props.data.country_trans}</span>
                 <span className='rating'>
