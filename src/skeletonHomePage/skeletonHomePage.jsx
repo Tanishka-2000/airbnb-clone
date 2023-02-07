@@ -3,12 +3,12 @@ import './styles.css';
 export default function SkeletonHomePage(){
   return(
     <div className='skeleton'>
-      <nav>
+      {/* <nav>
         <div></div>
         <div></div>
         <div></div>
       </nav>
-      <div className='skeleton-scrollbar'></div>
+      <div className='skeleton-scrollbar'></div> */}
       <div className='skeleton-container'>
 
         <div className='skeleton-card'>

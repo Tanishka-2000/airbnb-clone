@@ -4,11 +4,13 @@ import {
     createBrowserRouter,
     RouterProvider
 } from 'react-router-dom';
-import App from './App';
+// import App from './App';
 import './index.css';
 import Root from './root/root';
 import Home, {homeLoader} from './home/home';
-import SkeletonHomePage from './skeletonHomePage/skeletonHomePage';
+import Details, {hotelLoader} from './components/details/Details';
+// import SkeletonHomePage from './skeletonHomePage/skeletonHomePage';
+// import SkeletonDetailsPage from './components/details/utilities/skeletonDetailsPage';
 const router = createBrowserRouter([
     {
         path: '/airbnb-clone',
@@ -18,6 +20,11 @@ const router = createBrowserRouter([
                 index: true,
                 element: <Home />,
                 loader: homeLoader
+            },
+            {
+                path: 'hotels/:hotelId',
+                element: <Details />,
+                loader: hotelLoader
             }
         ]
     }
@@ -25,6 +32,8 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    // <RouterProvider router={router} />
-    <SkeletonHomePage />
+    // <App />
+    <RouterProvider router={router} />
+    // <SkeletonHomePage />
+    // <SkeletonDetailsPage />
 );

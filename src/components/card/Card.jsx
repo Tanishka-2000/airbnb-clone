@@ -1,16 +1,19 @@
-
+import { useNavigate } from 'react-router-dom';
 import {useState} from 'react';
 import './card.css';
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 function Card(props){
+    const navigate = useNavigate();
     const [isFavourite, setIsFavoutite] = useState(false);
     function handleClick(e){
-        props.showHotelDetail(props.data);
+        localStorage.setItem('hotel', JSON.stringify(props.data));
+        navigate(`/airbnb-clone/hotels/${props.data.hotel_id}`)
+        // props.showHotelDetail(props.data);
     }
     function addToFavoutite(e){
         setIsFavoutite(prev => !prev);
-        props.addToFavoutite(props.data.hotel_id);
+        // props.addToFavoutite(props.data.hotel_id);
         e.stopPropagation();
     }
     // function removeFromFavoutite(e){

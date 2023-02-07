@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import NavBar from '../components/navbar/NavBar';
-import ScrollBar from '../components/scrollbar/ScrollBar';
+// import ScrollBar from '../components/scrollbar/ScrollBar';
 
 export default function Root(){
   const [userId, setUserId] = useState(null);
@@ -10,7 +10,7 @@ export default function Root(){
   return(
     <>
       <NavBar hideHotelDetail={null} refreshScreen={null} setUserId={setUserId}/>
-      <ScrollBar refreshScreen={null}/>
+  
       <Outlet userId={userId}/>
     </>
   );
