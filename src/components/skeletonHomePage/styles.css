@@ -31,7 +31,7 @@
 .skeleton .skeleton-container{
   padding: 20px;
   width: 90%;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   display: grid;
   justify-content: center;
   align-items: center;

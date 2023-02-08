@@ -1,8 +1,57 @@
-# Getting Started with Create React App
+# Airbnb Clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is an attempt to make an airbnb clone using react and third-party-apis.
 
-## Available Scripts
+## Table of Contents
++ Introduction
++ Technologies
++ Setup
++ Live Demo
++ Features
++ Inspiraion
+
+## Introduction
+This project aims to provide users with a list of possible hotels on their favaorite location. You can custom
+your search of hotels using search bar in the navigaton bar or you can select any category from the scrollbar.
+You can also see the details of any hotel including its images, room types, facilities, reviews etc.
+
+## Technologies
++ React: ^18.2.0
++ React-router-dom: ^6.8.0
++ Firebase:  ^9.9.3
+
+## Setup
+ To run this project locally
+ ```
+ # clone this repository
+ git clone clone https://github.com/Tanishka-2000/airbnb-clone.git
+
+ # go into the repository
+ cd airbnb-clone
+
+ # install dependencies
+ npm install
+
+ # run the app
+ npm start
+ ```
+
+ ## Live Demo
+ Here is a live working demo [https://tanishka-2000.github.io/airbnb-clone/](https://tanishka-2000.github.io/airbnb-clone/)
+
+ ## Features
+  + The home page of this website shows a list of hotels along with its name, location, review and price per night.
+  + Hotels search can be customed using the search bar in the top navigation.
+  + User can also select any category of hotels from the scrollbar.
+  + User can signUp or signIn to make an account.
+  + On signing in, user can add hotel to favourite list by clicking on the heart button on each hotel card.
+  + On clicking any hotel card, you are directed to another page for that hotel where all the detals of the hotel can be found.
+  
+ ## Inspiration
+ Frontend style of this website is inspired by [https://www.airbnb.com](https://www.airbnb.com)
+
+
+<!-- ## Available Scripts
 
 In the project directory, you can run:
 
@@ -67,4 +116,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 ### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify) -->

@@ -1,3 +1,5 @@
+import app from '../firebase-config';
+import { getFirestore , doc, updateDoc, arrayUnion} from "firebase/firestore";
 import { useNavigate } from 'react-router-dom';
 import {useState} from 'react';
 import './card.css';
@@ -7,25 +9,20 @@ function Card(props){
     const navigate = useNavigate();
     const [isFavourite, setIsFavoutite] = useState(false);
     function handleClick(e){
+        console.log('visiting hotel');
         localStorage.setItem('hotel', JSON.stringify(props.data));
-        navigate(`/airbnb-clone/hotels/${props.data.hotel_id}`)
-        // props.showHotelDetail(props.data);
+        navigate(`/airbnb-clone/hotels/${props.data.hotel_id}`);
     }
-    function addToFavoutite(e){
-        setIsFavoutite(prev => !prev);
-        // props.addToFavoutite(props.data.hotel_id);
+    async function addToFavoutite(e){
         e.stopPropagation();
+        setIsFavoutite(prev => !prev);
+        if(!props.userId) return;
+        const db = getFirestore(app);
+        await updateDoc(doc(db, 'users', props.userId), {
+            favourite: arrayUnion(props.data),
+        });
     }
-    // function removeFromFavoutite(e){
-    //     props.removeFromFavoutite(props.data.hotel_id);
-    //     e.stopPropagation();
-    // }
-    // function isFavourite(){
-    //     if(props.favourite.includes(props.data.hotel_id)) setFavoutite(true);
-    // }
-    // useEffect(() => {
-    //     isFavourite();
-    // });
+
     let price = props.data.composite_price_breakdown?.gross_amount_per_night;
     let checkin = new Date();
     let checkOut = new Date(checkin.getTime() + 5*24*60*60*1000);
@@ -47,5 +44,3 @@ function Card(props){
     );
 }
 export default Card;
-// 9829
-// 	&#10084;hearts filled

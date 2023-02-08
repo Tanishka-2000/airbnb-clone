@@ -8,7 +8,7 @@ nav{
 nav>img{
     width: 100px;
 }
-nav>form{
+nav>form:not(.like-btn-form){
     width: 400px;
     height: 50px;
     font-size: 1.2rem;
@@ -126,4 +126,15 @@ input[type=date]:focus::-webkit-datetime-edit {
 }
 .sign-in-btns img{
     width: 50px;
+}
+
+
+.like-btn-form button{
+    width: 50px;
+    height: 50px;
+    color: red;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 2rem;
 }
