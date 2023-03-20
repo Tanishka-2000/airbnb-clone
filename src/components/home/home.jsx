@@ -12,8 +12,6 @@ export async function homeLoader({params}){
   let set1 = getDataByDestId(result[0]);
   result.shift();
   let set2 = async.mapLimit(result, 2, getDataByDestId);
-  // let set1 = getTestData();
-  // let set2 = [];
 
   return defer({set1, set2});
 }

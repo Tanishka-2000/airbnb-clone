@@ -13,7 +13,7 @@ import Favourite, {favouriteAction} from './components/favourite/favourite';
 // import SkeletonDetailsPage from './components/details/utilities/skeletonDetailsPage';
 const router = createBrowserRouter([
     {
-        path: '/',
+        path: '/airbnb-clone',
         element: <Root />,
         children: [
             {

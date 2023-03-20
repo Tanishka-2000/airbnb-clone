@@ -8,9 +8,6 @@ import ReviewScore from './utilities/reviewScore';
 import Rooms from './utilities/Rooms';
 import { Suspense } from 'react';
 import {SkeletonImageGrid, SkeletonReviewData, SkeletonReviewScore} from './utilities/skeletonDetailsPage';
-// import async from 'async';
-// import app from '../firebase-config';
-// import { getFirestore , doc, updateDoc, arrayUnion} from "firebase/firestore";
 
 export async function hotelLoader({params}){
 
@@ -19,33 +16,12 @@ export async function hotelLoader({params}){
     const reviewScore = getReviewScore(params.hotelId);
     const reviewData = getReviewData(params.hotelId);
 
-    // const result = async.parallelLimit({
-    //     hotelImages: async function(cb){
-    //         let r = await getImages(params.hotelId);
-    //     }
-    // })
     return defer({hotelImages, descp, reviewScore, reviewData});
 }
 
 export default function Details(){
     const data = useLoaderData();
     const hotel = JSON.parse(localStorage.getItem('hotel'));
-
-    // const db = getFirestore(app);
-
-    // async function addToFavoutite(){
-    //     console.log('updating adding');
-    //     await updateDoc(doc(db, 'users', props.userId), {
-    //         favourite: arrayUnion(props.hotel.hotel_id),
-    //     });
-    // }
-    // async function removeFromFavoutite(){
-    //     console.log('updating removing');
-    //     await updateDoc(doc(db, 'users',  props.userId), {
-    //         favourite: arrayRemove(props.hotel.hotel_id),
-    //     });
-    // }
-
 
     return(
         
@@ -85,6 +61,7 @@ export default function Details(){
                 <Amenities/>
                 <HotelForm price={hotel.composite_price_breakdown}/>
             </div>
+
             <div id='reviews'>
                 <h2>&#9733; 9.0 <span className=''>23 reviews</span></h2>
             
@@ -109,47 +86,8 @@ export default function Details(){
     )
 }
 
-// export default function Details(){
-//     const data = useLoaderData();
-//     const hotel = localStorage.getItem('hotel');
-//     return(
-//         <Suspense fallback={<SkeletonDetailPage />}>
-//             <Await resolve={data}>
-//                 <div className='details'>
-//                     <div className='heading'>{hotel.hotel_name}, {hotel.address}, {hotel.country_trans}</div>
-
-//                     {(data) => 
-//                         <div className='image-grid'>
-//                             {data.hotelImages?.slice(0,5).map((image,i) => <div  key={i}><img src={image.url_max} alt={image.photo_id}/></div>)}
-//                         </div>
-//                     }
-
-//                     <div className='overview'>
-//                         <div className='configuration'>
-//                             <div className='big'>{hotel.unit_configuration_label.split('<')[0]}</div>
-//                             <p>{hotel.unit_configuration_label.split(':')[1]}</p>
-//                         </div>
-
-//                         <Specials />
-//                         {(data) => <div className='description'>{data.desp}</div> } 
-//                         {(data) => <Rooms hotelImages={data.hotelImages}/> }
-//                         <Amenities/>
-//                         <HotelForm price={hotel.composite_price_breakdown}/>
-//                     </div>
-
-//                     <div className='reviews'>
-//                         <h2>&#9733; 9.0 <span className=''>23 reviews</span></h2>
-//                         {(data) => <ReviewScore reviewScores={data.reviewScore}/>}
-//                         {(data) => <ReviewData reviewData={data.reviewData}/>}
-//                     </div>
-
-//                 </div> 
-//             </Await>
-//         </Suspense>
-//     )
-// }
-
-async function getImages(id){ //ImageGrid
+       //ImageGrid
+async function getImages(id){
     const response = await fetch('https://booking-com.p.rapidapi.com/v1/hotels/photos?locale=en-gb&hotel_id='+id,{
         headers: {
             'X-RapidAPI-Key': '1107a84eabmsh0c79d2680cb6d1cp1384edjsn1e7834c13e78',
@@ -160,7 +98,8 @@ async function getImages(id){ //ImageGrid
     return result;
 }
 
-async function getHotelDescription(id){//Overview
+     //Overview
+async function getHotelDescription(id){
     const response = await fetch('https://booking-com.p.rapidapi.com/v1/hotels/description?locale=en-gb&hotel_id='+id,{
            headers: {
                'X-RapidAPI-Key': '1107a84eabmsh0c79d2680cb6d1cp1384edjsn1e7834c13e78',
@@ -171,24 +110,35 @@ async function getHotelDescription(id){//Overview
        return result.description;
 }
 
+// get scores of hotel
 async function getReviewScore(id){
+    // await delay(2000);
     const response = await fetch('https://booking-com.p.rapidapi.com/v1/hotels/review-scores?locale=en-gb&hotel_id='+id,{
            headers: {
                'X-RapidAPI-Key': '1107a84eabmsh0c79d2680cb6d1cp1384edjsn1e7834c13e78',
                'X-RapidAPI-Host': 'booking-com.p.rapidapi.com'
            }
        });
-       const result = await response.json();
-    return result.score_breakdown[0].question;
+    const result = await response.json();
+    return result.score_breakdown.length > 0 ? result.score_breakdown[0].question : [];
 }
 
+// get reviews of customers
 async function getReviewData(id){
+    // await delay(2000);
     const response = await fetch('https://booking-com.p.rapidapi.com/v1/hotels/reviews?sort_type=SORT_MOST_RELEVANT&locale=en-gb&hotel_id='+id,{
            headers: {
                'X-RapidAPI-Key': '1107a84eabmsh0c79d2680cb6d1cp1384edjsn1e7834c13e78',
                'X-RapidAPI-Host': 'booking-com.p.rapidapi.com'
            }
        });
-       const result = await response.json();
+    const result = await response.json();
+    console.log(result);
     return result.result;
 }
+
+// async function delay(ms){
+//     return new Promise((res) => {
+//         setTimeout(() => res(), ms);
+//     })
+// }
