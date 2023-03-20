@@ -4,7 +4,7 @@ import db from '../firebase-config';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc} from "firebase/firestore";
 import './navbar.css';
-import { useNavigate , Link, Form} from 'react-router-dom';
+import { useNavigate, Form} from 'react-router-dom';
 
 
 function NavBar(props){

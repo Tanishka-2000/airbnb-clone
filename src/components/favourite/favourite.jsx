@@ -1,5 +1,5 @@
 import './styles';
-import Card from '../card/Card';
+// import Card from '../card/Card';
 import { doc, getDoc } from "firebase/firestore";
 import db from '../firebase-config';
 import { useActionData } from 'react-router-dom';

@@ -1,33 +1,6 @@
-import {useState, useEffect} from 'react';
-
 function HotelForm(props){
-    // const [indianExhangeRate, setIndianExhangeRate] = useState(0);
-    // const [price, setPrice] = useState(0);
 
     let pricePerN = props.price.gross_amount_per_night.value;
-    let currency = props.price.gross_amount_per_night.currency;
-    // console.log(props);
-
-    // async function getExchangeRate(curr){
-    //     const response = await fetch('https://booking-com.p.rapidapi.com/v1/metadata/exchange-rates?locale=en-gb&currency='+currency,{
-    //            headers: {
-    //                'X-RapidAPI-Key': '1107a84eabmsh0c79d2680cb6d1cp1384edjsn1e7834c13e78',
-    //                'X-RapidAPI-Host': 'booking-com.p.rapidapi.com'
-    //            }
-    //        });
-    //        const result = await response.json();
-    //        const rates = result.exchange_rates;
-    //        for(let i = 58; i<62; i++){
-    //           if( rates[i].currency === 'INR'){
-    //               setIndianExhangeRate(rates[60].exchange_rate_buy);
-    //               break;
-    //           }
-    //        }
-    // }
-    // useEffect(() => {
-    //     // setPrice(props.price.gross_amount_per_night.)
-    //     getExchangeRate();
-    // },[]);
 
     function handleSubmit(e){
         e.preventDefault();
