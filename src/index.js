@@ -9,11 +9,9 @@ import Root from './components/root/root';
 import Home, {homeLoader} from './components/home/home';
 import Details, {hotelLoader} from './components/details/Details';
 import Favourite, {favouriteAction} from './components/favourite/favourite';
-// import SkeletonHomePage from './components/skeletonHomePage/skeletonHomePage';
-// import SkeletonDetailsPage from './components/details/utilities/skeletonDetailsPage';
 const router = createBrowserRouter([
     {
-        path: '/airbnb-clone',
+        path: '/',
         element: <Root />,
         children: [
             {
@@ -44,3 +42,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <RouterProvider router={router} />
 );
+
+
+// "predeploy": "npm run build",
+// "deploy": "gh-pages -d build",
