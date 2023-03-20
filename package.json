@@ -2,7 +2,6 @@
   "name": "airbnb-clone",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://Tanishka-2000.github.io/airbnb-clone",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.2",
     "@fortawesome/free-regular-svg-icons": "^6.1.2",

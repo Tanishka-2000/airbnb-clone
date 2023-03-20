@@ -11,7 +11,7 @@ function Card(props){
     function handleClick(e){
         console.log('visiting hotel');
         localStorage.setItem('hotel', JSON.stringify(props.data));
-        navigate(`/airbnb-clone/hotels/${props.data.hotel_id}`);
+        navigate(`/hotels/${props.data.hotel_id}`);
     }
     async function addToFavoutite(e){
         e.stopPropagation();

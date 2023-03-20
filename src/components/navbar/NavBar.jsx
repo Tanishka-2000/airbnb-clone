@@ -4,8 +4,8 @@ import db from '../firebase-config';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc} from "firebase/firestore";
 import './navbar.css';
-import { useNavigate, Form} from 'react-router-dom';
-
+import { useNavigate, Form, Link} from 'react-router-dom';
+import airbnbLogo from '../../airbnb-logo.png';
 
 function NavBar(props){
     const [value, setValue] = useState('');
@@ -78,7 +78,7 @@ function NavBar(props){
     }
     return(
         <nav>
-        <img src='airbnb-logo.png' alt="airbnb Logo" onClick={props.hideHotelDetail}/>
+        <Link to='/' ><img src={airbnbLogo} alt="airbnb Logo" onClick={props.hideHotelDetail}/></Link>
         <form onSubmit={handleClick}>
             <input type='text' placeholder='Search for AnyWhere' value={value} onChange={inputChange}/>
             <div className='search-btn'><span className="material-symbols-outlined">search</span></div>

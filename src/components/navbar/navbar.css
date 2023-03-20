@@ -5,7 +5,7 @@ nav{
     padding: 20px 150px;
     border-bottom: 1px solid #ddd;
 }
-nav>img{
+nav img{
     width: 100px;
 }
 nav>form:not(.like-btn-form){
