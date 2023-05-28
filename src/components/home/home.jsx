@@ -9,11 +9,9 @@ import async from 'async';
 export async function homeLoader({params}){
   let name = params.placeName || 'beach';
   const result = await getDataByName(name);
-  let set1 = getDataByDestId(result[0]);
-  result.shift();
-  let set2 = async.mapLimit(result, 2, getDataByDestId);
+  let hotels = getDataByDestId(result[0]);
 
-  return defer({set1, set2});
+  return defer({hotels});
 }
 
 export default function Home({userId}){
@@ -24,21 +22,11 @@ export default function Home({userId}){
       <ScrollBar refreshScreen={null}/>
       
         <Suspense fallback={<SkeletonHomePage />}>
-          <Await resolve={data.set1}>
+          <Await resolve={data.hotels}>
             {(hotels) =>    
               <div className='container'>      
                 {hotels.map((item,i) => <Card key={item.hotel_id} data={item} userId={userId}/>) } 
               </div>
-            }
-          </Await>
-        </Suspense>
-
-        <Suspense fallback={<SkeletonHomePage />}>
-          <Await resolve={data.set2}>
-            {(hotelGroup) =>   
-              <div className='container'>
-                {hotelGroup.map(hotels => hotels.map((item,i) => <Card key={item.hotel_id} data={item} userId={userId}/>)) }  
-              </div>        
             }
           </Await>
         </Suspense>

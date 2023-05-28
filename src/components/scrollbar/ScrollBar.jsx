@@ -9,10 +9,10 @@ function ScrollBar(props) {
     const options = ['beach_access','pool','landscape','cottage','villa','camping','cabin','houseboat','ac_unit','balcony','hiking','surfing','brunch_dining',
     'agriculture','house','villa','domain','location_city','wind_power','golf_course','downhill_skiing'];
 
-    function handleClick(e){
-        let name = e.target.getAttribute('data-name') || e.target.parentElement.getAttribute('data-name');
+    function handleClick(name){
+        // let name = e.target.getAttribute('data-name') || e.target.parentElement.getAttribute('data-name');
         console.log(name);
-        navigate(`places/${name}`)
+        navigate(`/places/${name}`)
         // props.refreshScreen(name);
     }
 
@@ -20,7 +20,7 @@ function ScrollBar(props) {
         <div className='wrapper'>
             <div className='scrollbar'>
                 {options.map((opt,i) => (
-                    <div key={i} data-name={names[i]} onClick={handleClick}>
+                    <div key={i} data-name={names[i]} onClick={() => handleClick(names[i])}>
                         <span className="material-symbols-outlined">{opt}</span>
                         <p>{names[i]}</p>
                     </div>
